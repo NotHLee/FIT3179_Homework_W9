@@ -34,7 +34,7 @@
         },
         {
             "data": {
-                "url": "geoBoundaries-MYS-ADM1.topojson",
+                "url": "https://raw.githubusercontent.com/NotHLee/FIT3179_Homework_W9/refs/heads/main/geoBoundaries-MYS-ADM1.topojson",
                 "format": {
                     "type": "topojson",
                     "feature": "MYSADM1gbOpen"
@@ -48,7 +48,7 @@
         },
         {
             "data": {
-                "url": "malaysia_aqi.csv"
+                "url": "https://raw.githubusercontent.com/NotHLee/FIT3179_Homework_W9/refs/heads/main/malaysia_aqi.csv"
             },
             "mark": {
                 "type": "circle",
