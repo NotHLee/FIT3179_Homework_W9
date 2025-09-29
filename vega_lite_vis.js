@@ -1,6 +1,6 @@
-var vg_1 = "graph1.vg.json";
+var vg_1 = "stations.vg.json";
 
-vegaEmbed("#bar_chart", vg_1).then(function(result) {
+vegaEmbed("#stations", vg_1).then(function(result) {
 
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
 
