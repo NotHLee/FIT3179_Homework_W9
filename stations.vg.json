@@ -81,6 +81,11 @@
                         "title": "Location"
                     },
                     {
+                        "field": "state",
+                        "type": "nominal",
+                        "title": "State"
+                    },
+                    {
                         "field": "aqi",
                         "type": "quantitative",
                         "title": "AQI"
