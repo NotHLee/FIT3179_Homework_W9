@@ -2,6 +2,19 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": 800,
     "height": 450,
+    "params": [
+        {
+            "name": "min_aqi",
+            "value": 0,
+            "bind": {
+                "input": "range",
+                "min": 0,
+                "max": 130,
+                "step": 1,
+                "name": "Minimum AQI: "
+            }
+        }
+    ],
     "projection": {
         "type": "mercator",
         "center": [109, 4],
@@ -50,6 +63,11 @@
             "data": {
                 "url": "https://raw.githubusercontent.com/NotHLee/FIT3179_Homework_W9/refs/heads/main/malaysia_aqi.csv"
             },
+            "transform": [
+                {
+                    "filter": "datum.aqi >= min_aqi"
+                }
+            ],
             "mark": {
                 "type": "circle",
                 "size": 100,
@@ -71,7 +89,11 @@
                     "title": "Air Quality Index (AQI)",
                     "type": "quantitative",
                     "scale": {
-                        "scheme": "viridis"
+                        "scheme": "viridis",
+                        "domain": [0, 130]
+                    },
+                    "legend": {
+                        "tickCount": 7
                     }
                 },
                 "tooltip": [
