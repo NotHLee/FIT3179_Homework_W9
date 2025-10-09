@@ -3,8 +3,22 @@
     "width": 600,
     "height": 400,
     "data": {
-        "url": "malaysia_aqi.csv"
+        "url": "https://raw.githubusercontent.com/NotHLee/FIT3179_Homework_W9/refs/heads/main/malaysia_aqi.csv",
+        "format": {
+            "type": "csv",
+            "parse": {
+                "aqi": "number",
+                "lat": "number",
+                "lon": "number"
+            }
+        }
     },
+    "transform": [
+        {
+            "window": [{"op": "rank", "as": "rank"}],
+            "sort": [{"field": "aqi", "order": "descending"}]
+        }
+    ],
     "layer": [
         {
             "mark": {
@@ -24,7 +38,7 @@
                     "type": "quantitative",
                     "title": "Air Quality Index (AQI)",
                     "scale": {
-                        "domain": [0, 130]
+                        "domain": [0, 140]
                     }
                 },
                 "color": {
@@ -54,11 +68,11 @@
         {
             "transform": [
                 {
-                    "window": [{"op": "rank", "as": "rank"}],
-                    "sort": [{"field": "aqi", "order": "descending"}]
+                    "filter": "datum.rank <= 5"
                 },
                 {
-                    "filter": "datum.rank >= 62"
+                    "calculate": "datum.station_location",
+                    "as": "label_text"
                 }
             ],
             "mark": {
@@ -80,7 +94,7 @@
                     "type": "quantitative"
                 },
                 "text": {
-                    "field": "station_location",
+                    "field": "label_text",
                     "type": "nominal"
                 },
                 "color": {

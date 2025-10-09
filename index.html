@@ -16,13 +16,17 @@
     <title>Air Quality Index</title>
 </head>
 
-<body class="flex flex-col min-h-screen items-center justify-center">
+<div class="flex flex-col min-h-screen items-center justify-center">
     <h1 class="text-3xl font-bold mb-4 text-center font-serif">Air Quality Index in Malaysia (29 September 2025)</h1>
+    <div class="flex flex-row">
     <div id="stations" class="text-center"></div>
     <script src="vega_lite_vis.js"></script>
+    <div id="stripplot" class="text-center"></div>
+    <script src="vega_lite_vis.js"></script>
+    </div>
     <h6 class="text-center text-black text-sm mt-4">
         Source: <a class="text-blue-500 underline" href="https://aqicn.org/data-platform/register/">World Air Quality Index Project</a>
     </h6>
-</body>
+</div>
 
 </html>
