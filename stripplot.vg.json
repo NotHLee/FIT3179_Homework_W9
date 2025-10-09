@@ -13,6 +13,19 @@
             }
         }
     },
+    "params": [
+        {
+            "name": "min_aqi",
+            "value": 0,
+            "bind": {
+                "input": "range",
+                "min": 0,
+                "max": 130,
+                "step": 1,
+                "name": "Minimum AQI: "
+            }
+        }
+    ],
     "transform": [
         {
             "window": [{"op": "rank", "as": "rank"}],
@@ -26,12 +39,20 @@
                 "size": 100,
                 "opacity": 0.7
             },
+            "transform": [
+                {
+                    "filter": "datum.aqi >= min_aqi"
+                }
+            ],
             "encoding": {
                 "y": {
                     "field": "state",
                     "type": "nominal",
                     "title": "State",
-                    "sort": "ascending"
+                    "sort": "ascending",
+                    "scale": {
+                        "domain": ["Johor", "Kedah", "Kelantan", "Melaka", "Negeri Sembilan", "Pahang", "Perak", "Perlis", "Pulau Pinang", "Sabah", "Sarawak", "Selangor", "Terengganu", "Wilayah Persekutuan"]
+                    }
                 },
                 "x": {
                     "field": "aqi",
@@ -44,7 +65,10 @@
                 "color": {
                     "field": "state",
                     "type": "nominal",
-                    "title": "State"
+                    "title": "State",
+                    "scale": {
+                        "domain": ["Johor", "Kedah", "Kelantan", "Melaka", "Negeri Sembilan", "Pahang", "Perak", "Perlis", "Pulau Pinang", "Sabah", "Sarawak", "Selangor", "Terengganu", "Wilayah Persekutuan"]
+                    }
                 },
                 "tooltip": [
                     {
@@ -68,7 +92,7 @@
         {
             "transform": [
                 {
-                    "filter": "datum.rank <= 5"
+                    "filter": "datum.rank <= 5 && datum.aqi >= min_aqi"
                 },
                 {
                     "calculate": "datum.station_location",
